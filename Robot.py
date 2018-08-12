@@ -71,7 +71,7 @@ class Robot(object):
         # If Qtable[state] already exits, then do
         # not change it.
         if state not in self.Qtable:
-            self.Qtable[state] = {'u':0, 'd':0, 'l':0, 'r':0}
+            self.Qtable[state] = {'u':0.0, 'd':0.0, 'l':0.0, 'r':0.0}
 
     def choose_action(self):
         """
@@ -87,7 +87,7 @@ class Robot(object):
         if self.learning:
             if is_random_exploration():
                 # TODO 6. Return random choose aciton
-                return self.maze.valid_actions[random.randint(0,3)]
+                return random.choice(self.maze.valid_actions)
             else:
                 # TODO 7. Return action with highest q value
                 return max(self.Qtable[self.state], key=self.Qtable[self.state].get)
